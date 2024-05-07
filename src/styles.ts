@@ -14,6 +14,7 @@ export const Header = styled.header`
   justify-content: space-between;
   height: 101px;
   padding: 0px 73px;
+  /* width: 100%; */
 `;
 
 export const ContainerCart = styled.div`
@@ -33,13 +34,20 @@ export const ContainerCart = styled.div`
 
 export const Main = styled.main`
   background-color: #f9f9f9;
-  padding: 4.82rem 16.15rem;
+  padding: 95px 268px 62px 268px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   gap: 10px;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas em telas maiores */
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
   }
 `;
 

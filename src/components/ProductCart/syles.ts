@@ -7,6 +7,11 @@ export const Container = styled.div`
   box-shadow: 0px 2px 8px 0px #00000022;
   border-radius: 8px;
   margin-top: 40px;
+
+  @media (max-width: 768px) {
+    width: 251px;
+    height: 328px;
+  }
 `;
 
 export const ProductImage = styled.img`
@@ -14,6 +19,10 @@ export const ProductImage = styled.img`
   height: 168px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 208px;
+  }
 `;
 
 export const ContainerCart = styled.div`

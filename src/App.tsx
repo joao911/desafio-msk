@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { map } from "lodash";
+import { map, size } from "lodash";
 
 import {
   Container,
@@ -15,9 +15,11 @@ import { ItemAdded } from "./components/ItemAdded";
 import { api } from "./api";
 import { ItemProps } from "./store/types";
 import { ProductCart } from "./components/ProductCart";
+import { useStore } from "./store";
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [products, setProducts] = useState<ItemProps[]>([]);
+  const { cart } = useStore();
 
   async function getItems() {
     try {
@@ -26,7 +28,6 @@ function App() {
       );
 
       setProducts(response.data.products);
-      console.log("response teste", products);
     } catch (error) {
       console.log("error", error);
     }
@@ -42,7 +43,7 @@ function App() {
         <img src={Logo} alt="logo" />
         <ContainerCart onClick={() => setIsVisible(true)}>
           <img src={Cart} alt="cart" />
-          <span>0</span>
+          <span>{size(cart)}</span>
         </ContainerCart>
       </Header>
       <ItemAdded isVisible={isVisible} setIsVisible={setIsVisible} />

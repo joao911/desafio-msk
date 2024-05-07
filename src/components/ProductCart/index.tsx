@@ -19,6 +19,19 @@ import { ItemProps } from "../../store/types";
 interface ProductCartProps {
   item: ItemProps;
 }
+
+export function formatPrice(price: number): string {
+  const formatter = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  let formattedPrice = formatter.format(price);
+  if (formattedPrice.endsWith(",00")) {
+    formattedPrice = formattedPrice.substring(0, formattedPrice.length - 3);
+  }
+
+  return formattedPrice;
+}
 export const ProductCart: React.FC<ProductCartProps> = ({ item }) => {
   const addNewCycle = useStore((state) => state.addToCart);
   function truncateString(str: string, num: number) {
@@ -27,19 +40,6 @@ export const ProductCart: React.FC<ProductCartProps> = ({ item }) => {
     } else {
       return str;
     }
-  }
-
-  function formatPrice(price: number): string {
-    const formatter = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    let formattedPrice = formatter.format(price);
-    if (formattedPrice.endsWith(",00")) {
-      formattedPrice = formattedPrice.substring(0, formattedPrice.length - 3);
-    }
-
-    return formattedPrice;
   }
 
   return (

@@ -43,7 +43,7 @@ export const ItemAddedToCart = styled.div`
   margin-top: 68px;
   padding: 0 40px;
   overflow: auto;
-  min-height: 639px;
+  height: 639px;
   scrollbar-width: thin; /* Para Firefox */
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Para Firefox */
 
