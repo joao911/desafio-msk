@@ -12,6 +12,17 @@ export const ItemsAdded = styled.div<ItemsAddedProps>`
   position: absolute;
   right: 0px;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    height: calc(100vh - 30px);
+    width: calc(100vw - 70px);
+    overflow-y: auto;
+    display: ${(props) => (props.isVisible ? "flex" : "none")};
+  }
 `;
 
 export const HeaderItemsAdded = styled.div`
@@ -44,7 +55,7 @@ export const ItemAddedToCart = styled.div`
   padding: 0 40px;
   overflow: auto;
   height: 639px;
-  scrollbar-width: thin; /* Para Firefox */
+  scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Para Firefox */
 
   /* Para Chrome, Safari e Edge */
@@ -80,6 +91,13 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ButtonRemoveItems = styled.button`
@@ -100,9 +118,22 @@ export const ButtonRemoveItems = styled.button`
   bottom: 0px;
   left: 378px;
   bottom: 68px;
+  @media (max-width: 768px) {
+    bottom: 10px;
+    left: 130px;
+    bottom: 0px;
+    font-size: 42px;
+    color: #000;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    font-weight: 400;
+  }
 `;
 
-export const Footer = styled.footer``;
+export const Footer = styled.footer`
+  width: 100%;
+`;
 
 export const Price = styled.div`
   display: flex;
@@ -140,6 +171,11 @@ export const FinishPurchase = styled.button`
 export const ImageProduct = styled.img`
   height: 88px;
   width: 88px;
+
+  @media (max-width: 768px) {
+    height: 128px;
+    width: 128px;
+  }
 `;
 
 export const ProductName = styled.p`
@@ -158,6 +194,22 @@ export const ProductQuantity = styled.div`
     font-weight: 400;
     font-size: 10px;
     line-height: 6.1px;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 0px;
+    span {
+      display: none;
+    }
+  }
+`;
+
+export const ContainerTotalMoneyAndQuantity = styled.div`
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 `;
 
@@ -198,6 +250,18 @@ export const Quantity = styled.div`
     align-items: center;
     justify-content: center;
   }
+
+  @media (max-width: 768px) {
+    width: 98px;
+    height: 35px;
+    button {
+      font-size: 24px;
+    }
+    span {
+      font-size: 20px;
+      width: 25px;
+    }
+  }
 `;
 
 export const TotalMoney = styled.span`
@@ -206,4 +270,16 @@ export const TotalMoney = styled.span`
   line-height: 17px;
   color: #000;
   width: 100px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    width: 98px;
+    height: 35px;
+    font-size: 18px;
+  }
 `;

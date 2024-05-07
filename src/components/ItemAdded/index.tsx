@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import {
   ButtonCloseCart,
   ButtonRemoveItems,
+  ContainerTotalMoneyAndQuantity,
   FinishPurchase,
   Footer,
   H2,
@@ -74,17 +75,19 @@ export const ItemAdded: React.FC<ItemsAddedProps> = ({
             </ButtonRemoveItems>
             <ImageProduct src={item.photo} />
             <ProductName>{item.name}</ProductName>
-            <ProductQuantity>
-              <span>Qtd:</span>
-              <Quantity>
-                <button onClick={() => decreaseQuantity(item.id)}> - </button>
-                <span>{item.quantity}</span>
-                <button onClick={() => increaseQuantity(item.id)}> + </button>
-              </Quantity>
-            </ProductQuantity>
-            <TotalMoney>
-              {formatPrice(Number(item.price) * item.quantity)}
-            </TotalMoney>
+            <ContainerTotalMoneyAndQuantity>
+              <ProductQuantity>
+                <span>Qtd:</span>
+                <Quantity>
+                  <button onClick={() => decreaseQuantity(item.id)}> - </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => increaseQuantity(item.id)}> + </button>
+                </Quantity>
+              </ProductQuantity>
+              <TotalMoney>
+                {formatPrice(Number(item.price) * item.quantity)}
+              </TotalMoney>
+            </ContainerTotalMoneyAndQuantity>
           </Item>
         ))}
       </ItemAddedToCart>

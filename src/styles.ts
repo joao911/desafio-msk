@@ -14,7 +14,10 @@ export const Header = styled.header`
   justify-content: space-between;
   height: 101px;
   padding: 0px 73px;
-  /* width: 100%; */
+
+  @media (max-width: 768px) {
+    padding: 0px 33px;
+  }
 `;
 
 export const ContainerCart = styled.div`
@@ -29,6 +32,12 @@ export const ContainerCart = styled.div`
 
   span {
     font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    width: 52px;
+    height: 26px;
+    border-radius: 8px;
   }
 `;
 
@@ -48,6 +57,8 @@ export const Main = styled.main`
     align-items: center;
     justify-content: center;
     padding: 0px;
+    height: calc(100vh - 145px); /* Ajusta a altura para a tela menos 80px */
+    overflow-y: auto;
   }
 `;
 
@@ -65,6 +76,7 @@ export const TextFooter = styled.p`
   font-size: 14px;
   line-height: 14.63px;
   color: #000;
+  text-align: center;
 `;
 
 export const Product = styled.div`
