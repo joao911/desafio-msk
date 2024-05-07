@@ -15,7 +15,6 @@ import { ItemAdded } from "./components/ItemAdded";
 import { api } from "./api";
 import { ItemProps } from "./store/types";
 import { ProductCart } from "./components/ProductCart";
-
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [products, setProducts] = useState<ItemProps[]>([]);
@@ -36,6 +35,7 @@ function App() {
   useEffect(() => {
     getItems();
   }, []);
+
   return (
     <Container>
       <Header>
@@ -48,13 +48,7 @@ function App() {
       <ItemAdded isVisible={isVisible} setIsVisible={setIsVisible} />
       <Main>
         {map(products, (product) => (
-          <ProductCart
-            key={product.id}
-            image={product.photo}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-          />
+          <ProductCart key={product.id} item={product} />
         ))}
       </Main>
       <Footer>

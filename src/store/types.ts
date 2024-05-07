@@ -8,3 +8,8 @@ export interface ItemProps {
   price: string;
   updatedAt: string;
 }
+
+export interface CartState {
+  cart: ItemProps[];
+  addToCart: (item: ItemProps) => void;
+}

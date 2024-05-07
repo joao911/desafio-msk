@@ -6,16 +6,11 @@ import {
   Footer,
   H2,
   HeaderItemsAdded,
-  ImageProduct,
   Item,
   ItemAddedToCart,
   ItemsAdded,
   Price,
-  ProductName,
-  ProductQuantity,
-  Quantity,
   Span,
-  TotalMoney,
 } from "./styled";
 
 interface ItemsAddedProps {
@@ -46,17 +41,6 @@ export const ItemAdded: React.FC<ItemsAddedProps> = ({
       <ItemAddedToCart>
         <Item>
           <ButtonRemoveItems>X</ButtonRemoveItems>
-          <ImageProduct src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" />
-          <ProductName>Apple Watch Series 4 GPS</ProductName>
-          <ProductQuantity>
-            <span>Qtd:</span>
-            <Quantity>
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-            </Quantity>
-          </ProductQuantity>
-          <TotalMoney>R$ 500,00</TotalMoney>
         </Item>
       </ItemAddedToCart>
       <Footer>

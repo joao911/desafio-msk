@@ -13,19 +13,14 @@ import {
   TitleAndPrice,
 } from "./syles";
 import { size } from "lodash";
+import { useStore } from "../../store";
+import { ItemProps } from "../../store/types";
 
 interface ProductCartProps {
-  image: string;
-  name: string;
-  description: string;
-  price: string;
+  item: ItemProps;
 }
-export const ProductCart: React.FC<ProductCartProps> = ({
-  image,
-  name,
-  description,
-  price,
-}) => {
+export const ProductCart: React.FC<ProductCartProps> = ({ item }) => {
+  const addNewCycle = useStore((state) => state.addToCart);
   function truncateString(str: string, num: number) {
     if (size(str) > num) {
       return str.slice(0, num) + "...";
@@ -49,17 +44,17 @@ export const ProductCart: React.FC<ProductCartProps> = ({
 
   return (
     <Container>
-      <ProductImage src={image} />
+      <ProductImage src={item.photo} />
       <ContainerCart>
         <TitleAndPrice>
-          <Title>{name}</Title>
+          <Title>{item.name}</Title>
           <ChipPrice>
-            <Price>{formatPrice(Number(price))}</Price>
+            <Price>{formatPrice(Number(item.price))}</Price>
           </ChipPrice>
         </TitleAndPrice>
-        <Description>{truncateString(description, 47)}</Description>
+        <Description>{truncateString(item.description, 47)}</Description>
       </ContainerCart>
-      <ButtonPurchase>
+      <ButtonPurchase onClick={() => addNewCycle(item)}>
         <ShoppingBagOpen size={20} />
         <TextButton>Comprar</TextButton>
       </ButtonPurchase>
