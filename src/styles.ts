@@ -59,6 +59,7 @@ export const Main = styled.main`
     padding: 0px;
     height: calc(100vh - 145px); /* Ajusta a altura para a tela menos 80px */
     overflow-y: auto;
+    margin: 30px 0px;
   }
 `;
 
