@@ -8,6 +8,7 @@ import {
   H2,
   HeaderItemsAdded,
   ImageProduct,
+  IsEmptyCart,
   Item,
   ItemAddedToCart,
   ItemsAdded,
@@ -18,8 +19,9 @@ import {
   Span,
   TotalMoney,
 } from "./styled";
+import { isEmpty, map, reduce } from "lodash";
+import { SmileySad } from "phosphor-react";
 import { useStore } from "../../store";
-import { map, reduce } from "lodash";
 import { formatPrice } from "../ProductCart";
 
 interface ItemsAddedProps {
@@ -64,6 +66,13 @@ export const ItemAdded: React.FC<ItemsAddedProps> = ({
       </HeaderItemsAdded>
 
       <ItemAddedToCart>
+        {isEmpty(cart) && (
+          <IsEmptyCart>
+            <SmileySad size={150} />
+            <p>Seu carrinho esta vazio</p>
+          </IsEmptyCart>
+        )}
+
         {map(cart, (item) => (
           <Item key={item.id}>
             <ButtonRemoveItems

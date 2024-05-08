@@ -81,6 +81,25 @@ export const ItemAddedToCart = styled.div`
     ); /* Cor da barra de rolagem ao passar o mouse */
   }
 `;
+
+export const IsEmptyCart = styled.div`
+  flex: 1;
+  width: 100%;
+  height: 70%;
+
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 15px;
+  }
+`;
 export const Item = styled.div`
   margin-top: 25px;
   height: 101px;
