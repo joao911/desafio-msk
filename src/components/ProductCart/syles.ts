@@ -68,7 +68,6 @@ export const Description = styled.p`
   font-weight: 300;
   color: #2c2c2c;
 `;
-
 export const ButtonPurchase = styled.button`
   border: none;
   background-color: #0f52ba;
@@ -79,6 +78,7 @@ export const ButtonPurchase = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const TextButton = styled.p`

@@ -1,21 +1,25 @@
 import { create } from "zustand";
 import { CartState } from "./types";
 import { filter, map, some } from "lodash";
+import { toast } from "react-toastify";
 
 export const useStore = create<CartState>((set) => ({
   cart: [], // inicializa o carrinho como um array vazio
+
   addToCart: (item) =>
     set((state) => {
       // Verifica se o item já está no carrinho usando o ID
-      // const itemExists = state.cart.some(cartItem => cartItem.id === item.id);
       const itemExists = some(
         state.cart,
         (cartItem) => cartItem.id === item.id
       );
-      if (!itemExists) {
-        return { cart: [...state.cart, { ...item, quantity: 1 }] };
+
+      if (itemExists) {
+        toast.error("Item já existe no carrinho");
+        return state;
       }
-      return state;
+      // Se o item não existe, adiciona ao carrinho com quantidade 1
+      return { cart: [...state.cart, { ...item, quantity: 1 }] };
     }),
   removeFromCart: (itemId) =>
     set((state) => ({
