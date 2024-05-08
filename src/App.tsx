@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { map, size } from "lodash";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import {
   Container,
@@ -19,10 +21,14 @@ import { useStore } from "./store";
 function App() {
   const [isVisible, setIsVisible] = useState(false);
   const [products, setProducts] = useState<ItemProps[]>([]);
+  const [loading, setLoading] = useState(false);
   const { cart } = useStore();
+
+  const loadingItems = Array(8).fill(0);
 
   async function getItems() {
     try {
+      setLoading(true);
       const response = await api.get(
         "/products?page=1&rows=8&sortBy=id&orderBy=DESC"
       );
@@ -30,6 +36,8 @@ function App() {
       setProducts(response.data.products);
     } catch (error) {
       console.log("error", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -48,9 +56,19 @@ function App() {
       </Header>
       <ItemAdded isVisible={isVisible} setIsVisible={setIsVisible} />
       <Main>
-        {map(products, (product) => (
-          <ProductCart key={product.id} item={product} />
-        ))}
+        <>
+          {loading ? (
+            <>
+              {map(loadingItems, (_, index) => (
+                <Skeleton height={285} width={218} key={index} />
+              ))}
+            </>
+          ) : (
+            map(products, (product) => (
+              <ProductCart key={product.id} item={product} />
+            ))
+          )}
+        </>
       </Main>
       <Footer>
         <TextFooter>
